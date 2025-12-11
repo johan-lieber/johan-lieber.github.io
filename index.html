@@ -1,24 +1,201 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Johan - Kernel Developer</title>
     <style>
-        body { font-family: Arial; max-width: 800px; margin: 40px auto; }
-        h1 { color: #333; }
-        .post { border-bottom: 1px solid #eee; padding: 20px 0; }
+        body {
+            font-family: Arial;
+            max-width: 800px;
+            margin: 40px auto;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .post {
+            border-bottom: 1px solid #eee;
+            padding: 20px 0;
+        }
+
+        .p1img {
+            width: 60vw;
+            height: 20vh;
+
+        }
+
+        .p3img {
+            width: 60vw;
+            height: 60vh;
+        }
+
+        .p4img {
+            width: 60vw;
+            height: 10vh;
+        }
+
+        .p42img {
+            width: 60vw;
+            height: auto;
+        }
     </style>
 </head>
+
 <body>
-    <h1>🚀 LFX Kernel Mentorship Journey</h1>
-    <p>Documenting my path to 5 Linux kernel patches</p>
-    
-    <div class="post">
-        <h2>Day 1: Starting the Journey</h2>
-        <p><em>March 20, 2024</em></p>
-        <p>Accepted into LFX Mentorship program! Goal: Get 5 patches accepted into Linux kernel.</p>
-        <p>Setup development environment and starting to look for beginner-friendly bugs.</p>
+    <div class="introduction">
+        <h1>My First steps towards open source </h1>
+        <p>
+        <p>I have been tinkering with Linux operating system since I bought my first laptop ever since then spent some
+            of my time initially trying to understand it . I like how Linux provided and wanted to understand contribute
+            and join its community but never really go into it neither contributed to it .As I was exploring stuffs
+            related to Linux I came across LFX mentorship which was hosting a Linux bug fixing program which I wanted to
+            join and at first I never though I would be able to get in as candidate but despite that I applied and
+            fortunately they accepted my candidacy. After the acceptance we were initially giving some task to completed
+            before December and one the most difficult among them were getting five or ten accepted patches to Linux
+            kernel. I later realized that submitting patches to Linux kernel was little hard and had to be done early in
+            the program to complete the Graduation . </p>
+        </p>
     </div>
-    
-    <p><strong>Follow my journey as I dive into kernel development!</strong></p>
+
+    <div class="body">
+        <h2>Patching submission Journey</h2>
+        <div class="p1">
+            <p>My first patch was in the USB system because I had prior knowledge in this subsystem I though it is the
+                perfect place to begin with . I knew there was “FIXME” statement in the Transport.c file.</p>
+            <img src="/Pictures/usb.png" alt="" class="p1img">
+            <p>Stating that It needed some protocol translation so with some prior knowledge I began to make a proper
+                protocol translation for it and submitted a patch to its specific maintainers like Greg Kroah-Hartman
+                and also Alan stern . My first patch got rejected by many times probably for seven or eight times
+                because of patches submission errors it got so worse that Greg said to me that “You are sending patches
+                on top of patches none of them will work. Please relax take a break and come back in a day or so “. It
+                is usually good to submit one patch in a single day or resend one patch in day but it differs in terms
+                of series .
+
+                After some review and feedback on the patch my patch eventually got rejected and Alan stern said that it
+                is unnecessary but even if it got rejected it was such an important patch for me since it required
+                understanding of USB subsystems and file related to like usb.c protocol.c and transport.c however I also
+                learned some valuable things along with the rejection some important lesson on how to submit a good
+                patch . I also learned how to submit a good patch by reading documentations in the Linux tree
+                under /Documentation/process which were good help in regard to patch submission .</p>
+        </div>
+
+        <div class="p2">
+            <h3>Changing Old apis</h3>
+            <p>With the rejection of first patch I quickly began searching of new ways to find bugs in hope for fixing
+                them and submitting a patch and during this groping I came across this website website which had many
+                “TODO” lists to do and one of them was API changes . There were many old functions that need to be
+                replaced with newer apis and I began to to replace old deprecated APIs with new API and send patches to
+                each subsystem maintainers and with much resend some patches were accepted and I got my first patches
+                accepted into the Linux Kernel .Although it was minute changes but eventually got accepted by
+                maintainers . Kernel Janitorial task wiki has not been update since 2017 so the bugs listed there were
+                already been fixed and no new api changes were listed on it so I need to move on and find new resource
+                to find bugs and in this regard one of the best resource was this website which helped me a lot not only
+                in searching for bugs but to understand functions ,subsystem , files and rest it was a good resource .
+                After some search I am across sysfs show functions and most of them had sprintf() being used to deliver
+                data to user space and it need to be upated with sysfs_emit() and with this I again began to replace
+                sysfs show function returns with sysfs_emit() and got one patched accepted here too however not all
+                sysfs show functions needs the replacement only the new implementation sysfs_show function needed not
+                all old sysfs show function.
+            </p>
+        </div>
+
+        <div class="p3">
+
+            <h3>Syzbot</h3>
+            <p>Fixing apis changes were easy to it did not required much care and work so the urge was there to do
+                something more difficult bugs and syzbot was a good resource in finding bugs that are more difficult
+                then doing api changes . Syzbot has many open bugs which most of them needs fixing .
+            </p>
+            <img src="/Pictures/syzbot.png" class="p3img" alt="">
+            <p>It is usually good to begin with beginner friendly bugs like “KASAN” bugs which are easy in terms of
+                understand syzbot bugs which are usually hard .These type of bugs might have its reproducers with them
+                but it depends .Most of the open bugs listed on Syzbot do not have any reproducers with them so
+                after fixing some apis changes I moved to syzbot bugs and began to understand and careful reproducing
+                them but no all reproducers work sometimes in my case I test two syzbot and both of them failed to
+                reproduce the same bug even if syzbot bug has an reproducers it does not mean that It will definitely
+                reproduce the same bug again with the specific configurations too .In such cases it is better to make
+                the reproducers by ourselves or leave the bugs as .Another thing is before we try to make a fix we need
+                to understand its scope and carefully do the fix because fixing it might break somethings else .
+                Although I attempt to fix two of syzbot bugs however both of them failed to reproduce the same bug on
+                system I tried but due to short on time I left it because I had to make several patches to mainline
+                Linux I could not spent more time on syzbot if I had I would not be able to make even five patches so I
+                need to make a choice here.
+            </p>
+        </div>
+
+        <div class="p4">
+            <h3>Staging drivers /drivers/staging</h3>
+
+            <p>/drivers/staging subsystem is such good place for beginners I wish I knew it earlier. Driver/staging area
+                is a place where there is a lot of need for fixes improvements and changes .When I heard about it I
+                quickly went to explore it and as expected there were many directories listed there .
+            </p>
+
+            <img src="/Pictures/staging.png" class="p4img" alt="">
+
+            <p>In most of the directories there were “TODO” files. These files were indicating that the driver needed
+                fixes and improvements and in hope of someone do it they were listed there and they were good for </p>
+
+            <img src="/Pictures/TODO.png" class="p42img" alt="">
+
+            <p>beginners to get their hands dirty. I explore many directories there and saw many to do lists however
+                because I was short on time I also eventually leave this directory for later exploration but in anyway
+                this was such a good place to begin with since it is where most fixes are needed that is why it is in
+                staging subsystem .
+
+            </p>
+        </div>
+
+
+        <div class="p5">
+            <h3>Tools and scripts </h3>
+
+            <p>Besides syzbot / driver/staging/ subsystem I also utilized many static analysis tools including
+                Coccinelle, smatch and checkpatch.pl to find bugs in the Linux kernel source tree. These tools were
+                helpful in both understanding and finding bugs however not all bugs found by either coccinelle and
+                smatch were bugs but rather a false positive and most of the bugs found by them required significant
+                investigation .Checkpatch.pl was more straight forward in terms of finding coding style and compliance
+                issues. Below are the some commands I used daily while in the mentorship
+            </p>
+
+            <p>Coccinella : make coccicheck MODE=report M=drivers/
+
+                Smatch : smatch -p=kernel --file-output drivers/usb/core/*.c
+
+                Checkpatch.pl : find . -name "*.c" -exec ~/linux-source/linux-git/scripts/checkpatch.pl --strict -f {}
+                \;
+            </p>
+        </div>
+
+        <div class="p6">
+
+            <h3>Mentors experience </h3>
+
+            <p>Although I have no attended much meetings but those meetings which I attended where incredibly productive
+                helpful and enjoying as well . One of the most valuable lessons I got from this mentorship was to see
+                how Shauh khan and David hunter were doing their job with such enthusiasm . She poured such energy into
+                in the program that she used to answer our questions one by one it did not matter to her whether it was
+                silly questions or not she would take good amount of time for each candidate’s questions and thoroughly
+                investigate about it and then she would give talks on this specific question and would give detailed
+                suggestions and in between David would remind us what we were missing he would tell us all those minute
+                details that we eventually miss also he was very helpful both of them used to answer our questions with
+                good details .It was amazing to see both of them working it was such that both of them emphasized on
+                every minute detail and left nothing undone . They did their job beautifully .
+
+            </p>
+        </div>
+
+        <div class="p7">
+            <h2>Conclusion</h2>
+            <p>At last this mentorship has been very helpful to me since I was new to open source not only it helped me
+                submitting patches to Linux but also helped in many other ways as well . I submitted at least six
+                patches to Linux during this program and many are under review. Since I learned submitting patches
+                during these program it think I will go on submitting patches in the future as well because it is such
+                and amazing ecosystem to work with . I grateful for this mentorship that such good mentors has taught us
+                and guided us on the way towards open source . Thanks to Shuah khan and David hunter .</p>
+        </div>
+    </div>
 </body>
+
 </html>
