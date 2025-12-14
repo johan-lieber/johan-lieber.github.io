@@ -4,6 +4,10 @@
 <head>
     <title>Johan - Kernel Developer</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Outfit:wght@100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
         body {
             font-family: Arial;
             max-width: 800px;
@@ -13,8 +17,9 @@
             background-color: #dfe2dcc2;
             color: black;
             font-size: medium;
-            font-weight: 500;
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-family: "Ubuntu", sans-serif;
+            font-weight: 400;
+            font-style: normal;
             border: solid rgba(0, 0, 0, 0.151);
             padding: 10px 100px;
 
@@ -23,10 +28,10 @@
 
         }
 
-        
-        .headings { 
-             color: #333;
-             font-weight: 600;
+
+        .headings {
+            color: #333;
+            font-weight: 600;
             font-size: 23px;
             /* font-style: italic; */
             display: flex;
@@ -64,23 +69,30 @@
         }
 
         .p1img {
-            width: 60vw;
+            width: 50vw;
             height: 20vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
 
         }
 
         .p3img {
-            width: 60vw;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            width: 50vw;
             height: 60vh;
         }
 
         .p4img {
-            width: 60vw;
+            width: 50vw;
             height: 10vh;
         }
 
         .p42img {
-            width: 60vw;
+            width: 50vw;
             height: auto;
         }
 
@@ -107,7 +119,7 @@
 
         .p7 {
             /* border: solid black; */
-            padding-top: 50px;
+            padding-top: 30px;
 
         }
 
@@ -123,48 +135,57 @@
 
         }
 
-        .introduction p {
+        .introduction>p {
             align-items: center;
             justify-content: center;
             text-align: justify;
         }
 
-        .p2 p {
+        .body p {
             align-items: center;
             justify-content: center;
             text-align: justify;
         }
-        .p4 p { 
+
+        .p4 p {
             align-items: center;
             justify-content: center;
-            text-align:justify;
-        }
-        .p5 p { 
-            align-items: center;
-            justify-content: center;
-            text-align:justify;
+            text-align: justify;
         }
 
-        .p6 { 
+        .p5 p {
             align-items: center;
             justify-content: center;
-            text-align:justify;
+            text-align: justify;
         }
 
-        .p7 p { 
+        .p6 {
             align-items: center;
             justify-content: center;
-            text-align:justify;
+            text-align: justify;
+        }
+
+        .p7 p {
+            align-items: center;
+            justify-content: center;
+            text-align: justify;
+        }
+
+        .introp {
+            justify-content: center;
+            align-items: center;
+            text-align: justify;
         }
     </style>
 </head>
 
 <body>
     <div class="introduction">
-        
+
         <div class="headings">My First steps towards open source</div>
-        <p>
-        <p>I have been tinkering with Linux operating system since I bought my first laptop ever since then I have been
+
+        <p class="introp">I have been tinkering with Linux operating system since I bought my first laptop ever since
+            then I have been
             spending consistent
             time initially trying to understand it .I liked what Linux provided and wanted to understand, contribute
             and join its community however never really went into it neither contributed to it .As I was exploring
@@ -172,12 +193,13 @@
             related to Linux I came across LFX mentorship which was hosting a Linux bug fixing program in september.
             At first I never thought I would be able to get in as a candidate but despite that I applied and
             fortunately i got selected .
-        <p> After the selection we were initially giving some tasks to complete
+        </p>
+
+        <p class="introp"> After the selection we were initially giving some tasks to complete
             before December and one the most difficult task among them were getting five or ten accepted patches to
             Linux
             kernel. I later realized that submitting patches to Linux kernel was little hard and had to be done early in
-            the program to complete the graduation .</p>
-        </p>
+            the program to complete the graduation
         </p>
 
 
@@ -340,7 +362,6 @@
                 details that we eventually miss also he was very helpful .Both of them used to answer our questions with
                 good details .It was amazing to see both of them working it was such that both of them emphasized on
                 every minute detail and left nothing undone . They did their job beautifully .
-
             </p>
         </div>
 
